@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">SurveyApp</string>
+    <string name="survey">Survey</string>
+    <string name="start_survey">Start Survey</string>
+    <string-array name="survey_types">
+        <item>Food Preferences</item>
+        <item>Dietary Habits</item>
+    </string-array>
+    <string-array name="food_pref_questions">
+        <item>What is your favorite cuisine?</item>
+        <item>How often do you eat out?</item>
+        <item>Do you prefer spicy food?</item>
+        <item>Do you prefer vegetarian food?</item>
+        <item>Do you like seafood?</item>
+    </string-array>
+    <string-array name="diet_habits_questions">
+        <item>Are you vegetarian?</item>
+        <item>Do you prefer organic food?</item>
+        <item>Do you consume dairy products?</item>
+        <item>Do you eat fast food?</item>
+        <item>Do you have any food allergies?</item>
+    </string-array>
+    <string-array name="yes_no_choices">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="fave_cuisine_choices">
+        <item>Chinese</item>
+        <item>French</item>
+        <item>Italian</item>
+        <item>Indian</item>
+        <item>Japanese</item>
+        <item>Thai</item>
+        <item>Turkish</item>
+    </string-array>
+    <string-array name="frequent_choices">
+        <item>Never</item>
+        <item>Rarely</item>
+        <item>Sometimes</item>
+        <item>Frequently</item>
+    </string-array>
+</resources>
