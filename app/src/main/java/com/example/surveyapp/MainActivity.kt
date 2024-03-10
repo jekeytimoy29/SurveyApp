@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
+import android.widget.Toast
 import com.example.surveyapp.databinding.ActivityMainBinding
-import com.example.surveyapp.model.SurveyListData
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -17,48 +17,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.surveyTypesGroup.removeAllViews()
+        var count = 0
 
         for (survey in resources.getStringArray(R.array.survey_types)) {
             val radioButton = RadioButton(this)
             radioButton.text = survey
             radioButton.textSize = resources.getDimension(R.dimen.radio_text_size)
+            radioButton.id = count
             binding.surveyTypesGroup.addView(radioButton)
+            count++
         }
     }
 
     fun startSurveyButtonOnClick(view: View) {
-        val surveyListData: SurveyListData
-        when (binding.surveyTypesGroup.checkedRadioButtonId) {
-            0 -> {
-                surveyListData = SurveyListData(
-                    resources.getStringArray(R.array.food_pref_questions),
-                    arrayOf(
-                        resources.getStringArray(R.array.fave_cuisine_choices),
-                        resources.getStringArray(R.array.frequent_choices),
-                        resources.getStringArray(R.array.yes_no_choices),
-                        resources.getStringArray(R.array.yes_no_choices),
-                        resources.getStringArray(R.array.yes_no_choices)
-                    )
-                )
+        val selectedSurveyTypeId : Int = binding.surveyTypesGroup.checkedRadioButtonId
+        if (selectedSurveyTypeId != -1) {
+            val intent = Intent(this, SurveyQuestionsActivity::class.java).apply {
+                putExtra("surveyTypeId", selectedSurveyTypeId)
             }
-            1-> {
-                surveyListData = SurveyListData(
-                    resources.getStringArray(R.array.diet_habits_questions),
-                    arrayOf(
-                        resources.getStringArray(R.array.yes_no_choices),
-                        resources.getStringArray(R.array.yes_no_choices),
-                        resources.getStringArray(R.array.yes_no_choices),
-                        resources.getStringArray(R.array.yes_no_choices),
-                        resources.getStringArray(R.array.yes_no_choices)
-                    )
-                )
-            }
-            else -> surveyListData = SurveyListData(arrayOf(), arrayOf())
-        }
+            startActivity(intent)
 
-        val intent = Intent(this, SurveyQuestionsActivity::class.java).apply {
-            putExtra("surveyQuestions", surveyListData)
+        } else {
+            Toast.makeText(this, "Error: Please select a survey type.", Toast.LENGTH_LONG).show()
         }
-        startActivity(intent)
     }
 }
