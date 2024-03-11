@@ -17,15 +17,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.surveyTypesGroup.removeAllViews()
-        var count = 0
 
-        for (survey in resources.getStringArray(R.array.survey_types)) {
+        for ((index, survey) in resources.getStringArray(R.array.survey_types).withIndex()) {
             val radioButton = RadioButton(this)
             radioButton.text = survey
-            radioButton.textSize = resources.getDimension(R.dimen.radio_text_size)
-            radioButton.id = count
+            radioButton.id = index
             binding.surveyTypesGroup.addView(radioButton)
-            count++
         }
     }
 

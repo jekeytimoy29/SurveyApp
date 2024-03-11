@@ -22,13 +22,14 @@
     <ListView
         android:id="@+id/surveyListView"
         android:layout_width="match_parent"
-        android:layout_height="401dp"
+        android:layout_height="501dp"
         android:layout_marginBottom="31dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/surveyTitle"
         app:layout_marginBaseline="20dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:divider="@null"/>
 
     <Button
         android:id="@+id/submitButton"
@@ -45,8 +46,10 @@
         android:id="@+id/resultsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/normal_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submitButton"
-        android:layout_margin="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
